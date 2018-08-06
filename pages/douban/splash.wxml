@@ -4,3 +4,4 @@
  <image src="{{ item.images.large }}" mode="aspectFill" style="position: absolute;height: 100%;width: 100%;opacity: .8;" />
  </swiper-item>
 </swiper>
+
