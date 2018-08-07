@@ -1,51 +1,7 @@
 page {
   line-height: 1.6;
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;
-  height: 100%;
-  background-color: #f9f9f9;
 }
-.container {
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-}
-.center {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.v-center{
-    align-items:center;
-    display:flex;
-}
-.shadow{
-    box-shadow:2px 2px 2px #C7C7C7;
-}
-.no-border-bottom:after {
-    border-bottom-style: none !important;
-}
-.no-border-bottom:before {
-    border-top-style: none !important;
-}
-.no-padding{
-    padding: 0 !important;
-}
-.no-margin{
-    margin: 0 !important;
-}
-.no-padding-top{
-    padding-top:0 !important;
-}
-.no-padding-bottom{
-    padding-bottom:0 !important;
-}
-
-/*-*/
-.view-hover-class{
-    opacity: 0.8;
-}
-
-/*以上*/
 icon {
   vertical-align: middle;
 }

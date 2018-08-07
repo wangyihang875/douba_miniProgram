@@ -92,12 +92,22 @@ Page({
 
   },
 
+  onPullDownRefresh() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.retrieveData().then(() => {
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
+    })
+  },
+
   retrieveData() {
     let app = getApp()
 
     var promises = this.data.boards.map(function(board) {
 
-      return app.request(`https://douban.uieee.com/v2/movie/${board.key}?start= 0&count=10`)
+      return app.request(`https://douban.uieee.com/v2/movie/${board.key}?start=0&count=10`)
 
         .then(function(d) {
 

@@ -39,7 +39,7 @@
   </view>
 
   <view class="weui-panel__ft">
-    <navigator class="weui-cell weui-cell_access weui-cell_link">
+    <navigator url="list?type={{item.key}}" class="weui-cell weui-cell_access weui-cell_link">
 
       <view class="weui-cell__bd">更多</view>
 
@@ -49,4 +49,17 @@
 
   </view>
 
+</view>
+
+<view class="weui-search-bar" style="position: absolute;top:0;width:100%;opacity: .8;">
+  <navigator url="search" class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" />
+    </view>
+    <label class="weui-search-bar__label">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </navigator>
 </view>

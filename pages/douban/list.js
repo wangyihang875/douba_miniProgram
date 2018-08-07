@@ -6,76 +6,70 @@ Page({
    */
   data: {
     type: 'in_theaters',
-
     page: 1,
-
     size: 20,
-
-    total: 1,
-
+    totalPage: 1,
     movies: []
   },
 
-  retrieve() {
+  onPullDownRefresh() {
+    this.setData({
+      page:1,
+      movies: []
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.retrieveData().then(() => {
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
+    })
+  },
 
+  loadMorePage() {
+    if (this.data.page >= this.data.totalPage) return
+    this.data.page++
+      this.retrieveData()
+  },
+
+  retrieveData() {
     let app = getApp()
-
     let start = (this.data.page - 1) * this.data.size
 
     wx.showLoading({
-
       title: '加载中'
-
     })
 
     return app.request(`https://douban.uieee.com/v2/movie/${this.data.type}?start=${start}&count=${this.data.size}`)
-
       .then(res => {
-
         if (res.subjects.length) {
           console.log(res)
           let movies = this.data.movies.concat(res.subjects)
-          let total = Math.ceil(res.total/this.data.size)
+          let totalPage = Math.ceil(res.total / this.data.size)
           this.setData({
             movies: movies,
-            total: total
+            totalPage: totalPage,
+            page: this.data.page
           })
-
           wx.setNavigationBarTitle({
             title: res.title
           })
           console.log(movies)
-
-          console.log(total+'|'+this.data.page)
         }
-
+        console.log(`totalPage=${this.data.totalPage}|page=${this.data.page}`)
       }).catch(err => {
-
         console.error(err)
-
       }).finally(() => {
-
         wx.hideLoading()
-
       })
-
   },
 
-  loadMorePage() {
+  
 
-    if (this.data.page > this.data.total) return
-
-    this.data.page++
-
-    this.retrieve()
-
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    this.retrieve()
+  onLoad(options) {
+    // 有三种类型： in_theaters  coming_soon  us_box
+    this.data.type = options.type || this.data.type
+    this.retrieveData()
   },
 
   /**
