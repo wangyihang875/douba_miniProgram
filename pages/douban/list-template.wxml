@@ -2,7 +2,7 @@
   <scroll-view style="display:inline" enable-back-to-top scroll-y bindscrolltolower="loadMorePage">
     <view class="weui-panel">
       <view class="weui-panel__bd">
-        <navigator wx:for="{{ movies }}" wx:key="{{ item.id }}" url="item?id= {{ item.id }}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <navigator wx:for="{{ movies }}" wx:key="{{ item.id }}" url="item?id={{ item.id }}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="height:inherit;width:120rpx">
             <image style="width: 128rpx;height: 168rpx;" class="weui-media-box__thumb" src="{{ item.images.small }}" />
           </view>

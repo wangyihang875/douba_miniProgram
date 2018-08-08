@@ -14,7 +14,6 @@ Page({
    */
   onLoad: function(options) {
     let app = getApp()
-
     app.request(`https://douban.uieee.com/v2/movie/subject/${options.id}`)
 
       .then(d => {
